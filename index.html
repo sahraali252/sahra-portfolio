@@ -2,181 +2,319 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sahra | portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Sahra Ali | Portfolio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+
+  <div class="scanlines"></div>
+
   <div class="page-shell">
 
+    <!-- TOPBAR -->
     <header class="topbar">
-      <div class="brand">sahra.exe</div>
+
+      <a href="#" class="brand">
+        sahra@portfolio:~$
+      </a>
+
       <nav>
-        <a href="#about">about</a>
-        <a href="#projects">projects</a>
-        <a href="#contact">contact</a>
+        <a href="#about">./about</a>
+        <a href="#projects">./projects</a>
+        <a href="#contact">./contact</a>
       </nav>
+
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-avatar-card floating">
-          <div class="level-badge">level 01: software engineer 🎀</div>
-          <img src="avatar.png" alt="cute avatar of sahra" class="avatar" />
 
-          <div class="mini-stats">
-            <span>creative</span>
-            <span>builder</span>
-            <span>curious</span>
-          </div>
-        </div>
+      <!-- HERO -->
+      <section class="hero">
 
         <div class="hero-text">
-          <p class="tiny-label">player one has entered the portfolio ✨</p>
+
+          <p class="eyebrow">
+            SYSTEM ONLINE · SOFTWARE ENGINEERING STUDENT
+          </p>
 
           <h1 class="typing-line"></h1>
 
-          <div class="speech-bubble">
-            software engineering student building
-            <span class="pill">cute</span>,
-            <span class="pill">useful</span>, and
-            <span class="pill">thoughtful</span>
-            things for the web 💻☁️
-          </div>
+          <p class="hero-description">
+            I’m Sahra, a Software Engineering student interested in
+            cybersecurity, data science, systems, and building
+            technology that can create real change.
+          </p>
 
           <div class="hero-buttons">
-            <a href="#projects" class="btn primary">view projects</a>
-            <a href="#contact" class="btn secondary">say hi</a>
+
+            <a href="#projects" class="btn primary">
+              View Projects
+            </a>
+
+            <a href="#contact" class="btn secondary">
+              Contact
+            </a>
+
           </div>
 
-          <div class="xp-bar-wrap">
-            <div class="xp-label">
-              <span>portfolio energy</span>
-              <span>78%</span>
-            </div>
-            <div class="xp-bar">
-              <div class="xp-fill"></div>
-            </div>
-          </div>
         </div>
+
+        <!-- TERMINAL -->
+        <div class="terminal-card">
+
+          <div class="terminal-header">
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <p>system_status.sh</p>
+          </div>
+
+          <div class="terminal-body">
+
+            <p><span>$</span> whoami</p>
+            <p>Sahra Ali</p>
+
+            <p><span>$</span> interests</p>
+            <p>
+              Cybersecurity · Data Science · Systems · Software Engineering
+            </p>
+
+            <p><span>$</span> current_focus</p>
+            <p>
+              Building projects, learning security fundamentals,
+              and improving as a developer.
+            </p>
+
+            <p><span>$</span> mission</p>
+            <p>
+              Use software to solve real problems and make meaningful change.
+            </p>
+
+          </div>
+
+        </div>
+
       </section>
 
-      <section id="about" class="card">
-        <div class="section-title-row">
-          <h2>about me</h2>
-          <span class="section-badge">main quest</span>
+      <!-- ABOUT -->
+      <section id="about" class="section-card">
+
+        <div class="section-heading">
+          <p>01</p>
+          <h2>About</h2>
         </div>
+
         <p>
-          i’m sahra, a software engineering student at concordia who likes making
-          things feel polished, friendly, and fun to use. i want my portfolio to
-          feel like a cute little digital world, not just a plain resume page.
-          i’m really interested in ai, cybersecurity, and software, but i’m always
-          curious and open to learning new things ✨
+          I’m Sahra, a Software Engineering student at Concordia University.
+          I’m currently exploring cybersecurity, data science, systems,
+          and full-stack development. I like learning by building and using
+          projects to understand how software works from the user interface
+          down to the system level.
         </p>
+
       </section>
 
-      <section id="projects" class="card">
-        <div class="section-title-row">
-          <h2>project inventory</h2>
-          <span class="section-badge">open folder</span>
+      <!-- PROJECTS -->
+      <section id="projects" class="section-card">
+
+        <div class="section-heading">
+          <p>02</p>
+          <h2>Projects</h2>
         </div>
 
         <div class="project-grid">
 
-          <article class="project-card">
-            <div class="project-top">
-              <span class="folder-icon">🧊</span>
-              <span class="project-tag">in progress</span>
+          <!-- LifeReceipt -->
+          <article class="project-card featured">
+
+            <div class="project-meta">
+              <span>Mobile App</span>
+              <span>Featured</span>
             </div>
-            <h3>rubik’s cube solver</h3>
-            <p>computer vision tool that scans a cube and generates solving steps.</p>
+
+            <h3>LifeReceipt</h3>
+
+            <p>
+              A receipt-style mobile app that turns daily spending,
+              workouts, and tasks into a structured life log with
+              timestamps, categories, records, and summaries.
+            </p>
+
             <div class="stack">
-              <span>python</span>
-              <span>opencv</span>
-              <span>solver</span>
+              <span>React Native</span>
+              <span>Expo</span>
+              <span>TypeScript</span>
+              <span>AsyncStorage</span>
             </div>
+
+            <div class="project-links">
+
+              <a
+                href="https://github.com/sahraali252/LifeReceipt"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Source Code
+              </a>
+
+            </div>
+
           </article>
 
+          <!-- RUBIKS -->
           <article class="project-card">
-            <div class="project-top">
-              <span class="folder-icon">📁</span>
-              <span class="project-tag">featured</span>
+
+            <div class="project-meta">
+              <span>Computer Vision</span>
+              <span>In Progress</span>
             </div>
-            <h3>internnext</h3>
-            <p>ai-powered resume tailoring platform.</p>
+
+            <h3>Rubik’s Cube Vision Solver</h3>
+
+            <p>
+              A computer-vision-based Rubik’s Cube solver that
+              allows users to scan a cube with a camera and receive
+              step-by-step solving guidance.
+            </p>
+
             <div class="stack">
-              <span>react</span>
-              <span>node</span>
-              <span>ai</span>
+              <span>Computer Vision</span>
+              <span>Algorithms</span>
+              <span>JavaScript</span>
             </div>
+
           </article>
 
+          <!-- INTERNNEXT -->
           <article class="project-card">
-            <div class="project-top">
-              <span class="folder-icon">📁</span>
-              <span class="project-tag">java</span>
+
+            <div class="project-meta">
+              <span>AI Platform</span>
+              <span>Full Stack</span>
             </div>
-            <h3>flight management system</h3>
-            <p>oop-based system for managing flights.</p>
+
+            <h3>InternNext</h3>
+
+            <p>
+              AI-powered resume tailoring and motivation platform
+              designed to help students improve internship applications.
+            </p>
+
             <div class="stack">
-              <span>java</span>
-              <span>oop</span>
-              <span>arrays</span>
+              <span>React</span>
+              <span>Node.js</span>
+              <span>AI</span>
             </div>
+
           </article>
 
+          <!-- FLIGHT -->
           <article class="project-card">
-            <div class="project-top">
-              <span class="folder-icon">📁</span>
-              <span class="project-tag">full stack</span>
+
+            <div class="project-meta">
+              <span>Java</span>
+              <span>OOP</span>
             </div>
-            <h3>registration system</h3>
-            <p>web app with database integration.</p>
+
+            <h3>Flight Management System</h3>
+
+            <p>
+              Object-oriented Java system for managing flights,
+              passengers, and records using structured classes
+              and arrays.
+            </p>
+
             <div class="stack">
-              <span>node</span>
-              <span>mysql</span>
-              <span>javascript</span>
+              <span>Java</span>
+              <span>OOP</span>
+              <span>Data Structures</span>
             </div>
+
+          </article>
+
+          <!-- REGISTRATION -->
+          <article class="project-card">
+
+            <div class="project-meta">
+              <span>Web App</span>
+              <span>Database</span>
+            </div>
+
+            <h3>Registration System</h3>
+
+            <p>
+              CRUD web application with backend logic and
+              database integration for managing registration records.
+            </p>
+
+            <div class="stack">
+              <span>Node.js</span>
+              <span>MySQL</span>
+              <span>JavaScript</span>
+            </div>
+
           </article>
 
         </div>
+
       </section>
 
-      <section class="card love-card">
-        <div class="section-title-row">
-          <h2>what i love</h2>
-          <span class="section-badge">bonus area</span>
+      <!-- CONTACT -->
+      <section id="contact" class="section-card">
+
+        <div class="section-heading">
+          <p>03</p>
+          <h2>Contact</h2>
         </div>
 
-        <div class="love-grid">
-          <div class="love-box">pretty interfaces 🎀</div>
-          <div class="love-box">problem solving 🧩</div>
-          <div class="love-box">making ideas real ☁️</div>
-          <div class="love-box">learning by building 🌷</div>
-        </div>
-      </section>
-
-      <section id="contact" class="card">
-        <div class="section-title-row">
-          <h2>contact</h2>
-          <span class="section-badge">side quest</span>
-        </div>
-
-        <p>want to connect? i’d love to chat about internships, projects, or tech.</p>
+        <p>
+          I’m open to internships, collaborations,
+          and software engineering opportunities.
+        </p>
 
         <div class="contact-list">
-          <a href="mailto:sahraxali@gmail.com">sahraxali@gmail.com</a>
-          <a href="https://github.com/sahraali252" target="_blank">github</a>
-          <a href="https://www.linkedin.com/in/sahraali" target="_blank">linkedin</a>
+
+          <a href="mailto:sahraxali@gmail.com">
+            sahraxali@gmail.com
+          </a>
+
+          <a
+            href="https://github.com/sahraali252"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/sahraali"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
         </div>
+
       </section>
 
     </main>
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
