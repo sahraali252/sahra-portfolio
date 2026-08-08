@@ -16,7 +16,7 @@ body {
   color: #5c6170;
 
   background-image:
-    radial-gradient(
+    radial-gradient(s
       circle at top left,
       #ffe6f2 0,
       transparent 28%
