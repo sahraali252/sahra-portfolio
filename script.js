@@ -1,383 +1,157 @@
-const target = document.querySelector(".typing-line");
+const typingTarget = document.querySelector(".typing-line");
+const fullText = "hi, i’m sahra.";
+const nameStart = fullText.indexOf("sahra");
 
-const fullText = "hi i’m sahra";
-const beforeName = "hi i’m";
+let characterIndex = 0;
 
-let index = 0;
-let isDeleting = false;
+function typeOnce() {
+  if (!typingTarget) return;
 
-function renderText(current) {
-  if (!target) return;
+  const currentText = fullText.slice(0, characterIndex);
+  const introduction = currentText.slice(0, nameStart);
+  const name = currentText.slice(nameStart);
 
-  if (current.length <= beforeName.length) {
-    target.innerHTML = `
-      <span class="dark-text">${current}</span>
-      <span class="cursor">♡</span>
-    `;
-  } else {
-    const first = current.slice(
-      0,
-      beforeName.length
-    );
+  typingTarget.innerHTML = `
+    <span class="dark-text">${introduction}</span><span class="pink-text">${name}</span><span class="cursor" aria-hidden="true"></span>
+  `;
 
-    const second = current.slice(
-      beforeName.length
-    );
-
-    target.innerHTML = `
-      <span class="dark-text">${first}</span>
-      <span class="pink-text">${second}</span>
-      <span class="cursor">♡</span>
-    `;
+  if (characterIndex < fullText.length) {
+    characterIndex += 1;
+    window.setTimeout(typeOnce, 85);
   }
 }
 
-function typeLoop() {
-  if (!target) return;
+const buildButton = document.querySelector(".build-toggle");
+const buildLog = document.querySelector(".build-log");
 
-  const current = fullText.slice(
-    0,
-    index
-  );
+if (buildButton && buildLog) {
+  buildButton.addEventListener("click", () => {
+    const isOpen = buildLog.classList.toggle("open");
 
-  renderText(current);
+    buildButton.textContent = isOpen
+      ? "close build details"
+      : "view build details";
 
-  if (
-    !isDeleting &&
-    index < fullText.length
-  ) {
-    index++;
-
-    setTimeout(
-      typeLoop,
-      120
-    );
-  } else if (
-    !isDeleting &&
-    index === fullText.length
-  ) {
-    isDeleting = true;
-
-    setTimeout(
-      typeLoop,
-      1200
-    );
-  } else if (
-    isDeleting &&
-    index > 0
-  ) {
-    index--;
-
-    setTimeout(
-      typeLoop,
-      70
-    );
-  } else {
-    isDeleting = false;
-
-    setTimeout(
-      typeLoop,
-      400
-    );
-  }
+    buildButton.setAttribute("aria-expanded", String(isOpen));
+  });
 }
 
-const buildButton =
-  document.querySelector(
-    ".build-toggle"
+document.querySelectorAll("[data-gallery-toggle]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const galleryId = button.dataset.galleryToggle;
+    const gallery = document.getElementById(galleryId);
+
+    if (!gallery) return;
+
+    const isOpen = gallery.classList.toggle("open");
+
+    const galleryName =
+      galleryId === "ctf-gallery"
+        ? "ctf"
+        : "event";
+
+    button.textContent = isOpen
+      ? "close photos"
+      : `view ${galleryName} photos`;
+
+    button.setAttribute("aria-expanded", String(isOpen));
+  });
+});
+
+document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+  const slides = Array.from(
+    carousel.querySelectorAll(".carousel-slide")
   );
 
-const buildLog =
-  document.querySelector(
-    ".build-log"
-  );
+  const previousButton = carousel.querySelector(".carousel-prev");
+  const nextButton = carousel.querySelector(".carousel-next");
+  const dotsContainer = carousel.querySelector(".carousel-dots");
+  const counter = carousel.querySelector(".carousel-counter");
 
-if (
-  buildButton &&
-  buildLog
-) {
-  buildButton.addEventListener(
-    "click",
-    () => {
-      const isOpen =
-        buildLog.classList.toggle(
-          "open"
-        );
+  let currentIndex = 0;
+  let touchStartX = 0;
 
-      buildButton.textContent =
-        isOpen
-          ? "close build log ♡"
-          : "view build log ✦";
+  if (!slides.length) return;
 
-      buildButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
+  function updateCarousel() {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("active", index === currentIndex);
+    });
 
-      if (isOpen) {
-        setTimeout(
-          () => {
-            buildLog.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
-          },
-          100
-        );
-      }
+    carousel.querySelectorAll(".carousel-dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentIndex);
+    });
+
+    if (counter) {
+      counter.textContent = `${currentIndex + 1} / ${slides.length}`;
     }
-  );
-}
-
-const galleryButtons =
-  document.querySelectorAll(
-    "[data-gallery-toggle]"
-  );
-
-galleryButtons.forEach(
-  (button) => {
-    button.addEventListener(
-      "click",
-      () => {
-        const galleryId =
-          button.dataset.galleryToggle;
-
-        const gallery =
-          document.getElementById(
-            galleryId
-          );
-
-        if (!gallery) return;
-
-        const isOpen =
-          gallery.classList.toggle(
-            "open"
-          );
-
-        button.textContent =
-          isOpen
-            ? "close photos ♡"
-            : galleryId === "ctf-gallery"
-              ? "view ctf photos ✦"
-              : "view event photos ✦";
-
-        button.setAttribute(
-          "aria-expanded",
-          String(isOpen)
-        );
-
-        if (isOpen) {
-          setTimeout(
-            () => {
-              gallery.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest"
-              });
-            },
-            100
-          );
-        }
-      }
-    );
   }
-);
 
-const carousels =
-  document.querySelectorAll(
-    "[data-carousel]"
-  );
-
-carousels.forEach(
-  (carousel) => {
-    const slides =
-      Array.from(
-        carousel.querySelectorAll(
-          ".carousel-slide"
-        )
-      );
-
-    const previousButton =
-      carousel.querySelector(
-        ".carousel-prev"
-      );
-
-    const nextButton =
-      carousel.querySelector(
-        ".carousel-next"
-      );
-
-    const dotsContainer =
-      carousel.querySelector(
-        ".carousel-dots"
-      );
-
-    const counter =
-      carousel.querySelector(
-        ".carousel-counter"
-      );
-
-    let currentIndex = 0;
-
-    if (!slides.length) return;
-
-    slides.forEach(
-      (_, slideIndex) => {
-        const dot =
-          document.createElement(
-            "button"
-          );
-
-        dot.type = "button";
-
-        dot.className =
-          "carousel-dot";
-
-        dot.setAttribute(
-          "aria-label",
-          `go to photo ${slideIndex + 1}`
-        );
-
-        dot.addEventListener(
-          "click",
-          () => {
-            currentIndex =
-              slideIndex;
-
-            updateCarousel();
-          }
-        );
-
-        if (dotsContainer) {
-          dotsContainer.appendChild(
-            dot
-          );
-        }
-      }
-    );
-
-    function updateCarousel() {
-      slides.forEach(
-        (slide, slideIndex) => {
-          slide.classList.toggle(
-            "active",
-            slideIndex === currentIndex
-          );
-        }
-      );
-
-      const dots =
-        carousel.querySelectorAll(
-          ".carousel-dot"
-        );
-
-      dots.forEach(
-        (dot, dotIndex) => {
-          dot.classList.toggle(
-            "active",
-            dotIndex === currentIndex
-          );
-        }
-      );
-
-      if (counter) {
-        counter.textContent =
-          `${currentIndex + 1} / ${slides.length}`;
-      }
-    }
-
-    if (previousButton) {
-      previousButton.addEventListener(
-        "click",
-        () => {
-          currentIndex =
-            (
-              currentIndex -
-              1 +
-              slides.length
-            ) %
-            slides.length;
-
-          updateCarousel();
-        }
-      );
-    }
-
-    if (nextButton) {
-      nextButton.addEventListener(
-        "click",
-        () => {
-          currentIndex =
-            (
-              currentIndex +
-              1
-            ) %
-            slides.length;
-
-          updateCarousel();
-        }
-      );
-    }
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    carousel.addEventListener(
-      "touchstart",
-      (event) => {
-        touchStartX =
-          event.changedTouches[0].screenX;
-      },
-      {
-        passive: true
-      }
-    );
-
-    carousel.addEventListener(
-      "touchend",
-      (event) => {
-        touchEndX =
-          event.changedTouches[0].screenX;
-
-        const difference =
-          touchStartX -
-          touchEndX;
-
-        if (
-          Math.abs(difference) <
-          45
-        ) {
-          return;
-        }
-
-        if (difference > 0) {
-          currentIndex =
-            (
-              currentIndex +
-              1
-            ) %
-            slides.length;
-        } else {
-          currentIndex =
-            (
-              currentIndex -
-              1 +
-              slides.length
-            ) %
-            slides.length;
-        }
-
-        updateCarousel();
-      },
-      {
-        passive: true
-      }
-    );
+  function showPrevious() {
+    currentIndex =
+      (currentIndex - 1 + slides.length) % slides.length;
 
     updateCarousel();
   }
-);
 
-window.addEventListener(
-  "load",
-  typeLoop
-);
+  function showNext() {
+    currentIndex =
+      (currentIndex + 1) % slides.length;
+
+    updateCarousel();
+  }
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = "carousel-dot";
+    dot.setAttribute("aria-label", `Go to photo ${index + 1}`);
+
+    dot.addEventListener("click", () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+
+    if (dotsContainer) {
+      dotsContainer.appendChild(dot);
+    }
+  });
+
+  if (previousButton) {
+    previousButton.addEventListener("click", showPrevious);
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", showNext);
+  }
+
+  carousel.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
+
+  carousel.addEventListener(
+    "touchend",
+    (event) => {
+      const touchEndX = event.changedTouches[0].screenX;
+      const difference = touchStartX - touchEndX;
+
+      if (Math.abs(difference) < 45) return;
+
+      if (difference > 0) {
+        showNext();
+      } else {
+        showPrevious();
+      }
+    },
+    { passive: true }
+  );
+
+  updateCarousel();
+});
+
+window.addEventListener("load", typeOnce);
