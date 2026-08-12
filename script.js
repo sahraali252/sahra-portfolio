@@ -1,23 +1,26 @@
 const typingTarget = document.querySelector(".typing-line");
 const fullText = "hi, i’m sahra.";
 const nameStart = fullText.indexOf("sahra");
-
 let characterIndex = 0;
+let isDeleting = false;
 
-function typeOnce() {
+function typeLoop() {
   if (!typingTarget) return;
-
   const currentText = fullText.slice(0, characterIndex);
-  const introduction = currentText.slice(0, nameStart);
-  const name = currentText.slice(nameStart);
+  typingTarget.innerHTML = `<span class="dark-text">${currentText.slice(0, nameStart)}</span><span class="pink-text">${currentText.slice(nameStart)}</span><span class="cursor" aria-hidden="true"></span>`;
 
-  typingTarget.innerHTML = `
-    <span class="dark-text">${introduction}</span><span class="pink-text">${name}</span><span class="cursor" aria-hidden="true"></span>
-  `;
-
-  if (characterIndex < fullText.length) {
+  if (!isDeleting && characterIndex < fullText.length) {
     characterIndex += 1;
-    window.setTimeout(typeOnce, 85);
+    window.setTimeout(typeLoop, 90);
+  } else if (!isDeleting && characterIndex === fullText.length) {
+    isDeleting = true;
+    window.setTimeout(typeLoop, 1800);
+  } else if (isDeleting && characterIndex > 0) {
+    characterIndex -= 1;
+    window.setTimeout(typeLoop, 50);
+  } else {
+    isDeleting = false;
+    window.setTimeout(typeLoop, 450);
   }
 }
 
@@ -27,131 +30,89 @@ const buildLog = document.querySelector(".build-log");
 if (buildButton && buildLog) {
   buildButton.addEventListener("click", () => {
     const isOpen = buildLog.classList.toggle("open");
-
-    buildButton.textContent = isOpen
-      ? "close build details"
-      : "view build details";
-
+    buildButton.textContent = isOpen ? "close build details" : "view build details";
     buildButton.setAttribute("aria-expanded", String(isOpen));
   });
 }
 
 document.querySelectorAll("[data-gallery-toggle]").forEach((button) => {
   button.addEventListener("click", () => {
-    const galleryId = button.dataset.galleryToggle;
-    const gallery = document.getElementById(galleryId);
-
+    const gallery = document.getElementById(button.dataset.galleryToggle);
     if (!gallery) return;
-
     const isOpen = gallery.classList.toggle("open");
-
-    const galleryName =
-      galleryId === "ctf-gallery"
-        ? "ctf"
-        : "event";
-
-    button.textContent = isOpen
-      ? "close photos"
-      : `view ${galleryName} photos`;
-
+    const name = button.dataset.galleryToggle === "ctf-gallery" ? "ctf" : "event";
+    button.textContent = isOpen ? "close photos" : `view ${name} photos`;
     button.setAttribute("aria-expanded", String(isOpen));
   });
 });
 
 document.querySelectorAll("[data-carousel]").forEach((carousel) => {
-  const slides = Array.from(
-    carousel.querySelectorAll(".carousel-slide")
-  );
-
-  const previousButton = carousel.querySelector(".carousel-prev");
-  const nextButton = carousel.querySelector(".carousel-next");
+  const slides = [...carousel.querySelectorAll(".carousel-slide")];
   const dotsContainer = carousel.querySelector(".carousel-dots");
   const counter = carousel.querySelector(".carousel-counter");
-
   let currentIndex = 0;
   let touchStartX = 0;
-
   if (!slides.length) return;
 
   function updateCarousel() {
-    slides.forEach((slide, index) => {
-      slide.classList.toggle("active", index === currentIndex);
-    });
-
-    carousel.querySelectorAll(".carousel-dot").forEach((dot, index) => {
-      dot.classList.toggle("active", index === currentIndex);
-    });
-
-    if (counter) {
-      counter.textContent = `${currentIndex + 1} / ${slides.length}`;
-    }
+    slides.forEach((slide, index) => slide.classList.toggle("active", index === currentIndex));
+    carousel.querySelectorAll(".carousel-dot").forEach((dot, index) => dot.classList.toggle("active", index === currentIndex));
+    if (counter) counter.textContent = `${currentIndex + 1} / ${slides.length}`;
   }
 
   function showPrevious() {
-    currentIndex =
-      (currentIndex - 1 + slides.length) % slides.length;
-
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateCarousel();
   }
 
   function showNext() {
-    currentIndex =
-      (currentIndex + 1) % slides.length;
-
+    currentIndex = (currentIndex + 1) % slides.length;
     updateCarousel();
   }
 
   slides.forEach((_, index) => {
     const dot = document.createElement("button");
-
     dot.type = "button";
     dot.className = "carousel-dot";
     dot.setAttribute("aria-label", `Go to photo ${index + 1}`);
-
     dot.addEventListener("click", () => {
       currentIndex = index;
       updateCarousel();
     });
-
-    if (dotsContainer) {
-      dotsContainer.appendChild(dot);
-    }
+    dotsContainer?.appendChild(dot);
   });
 
-  if (previousButton) {
-    previousButton.addEventListener("click", showPrevious);
-  }
-
-  if (nextButton) {
-    nextButton.addEventListener("click", showNext);
-  }
-
-  carousel.addEventListener(
-    "touchstart",
-    (event) => {
-      touchStartX = event.changedTouches[0].screenX;
-    },
-    { passive: true }
-  );
-
-  carousel.addEventListener(
-    "touchend",
-    (event) => {
-      const touchEndX = event.changedTouches[0].screenX;
-      const difference = touchStartX - touchEndX;
-
-      if (Math.abs(difference) < 45) return;
-
-      if (difference > 0) {
-        showNext();
-      } else {
-        showPrevious();
-      }
-    },
-    { passive: true }
-  );
+  carousel.querySelector(".carousel-prev")?.addEventListener("click", showPrevious);
+  carousel.querySelector(".carousel-next")?.addEventListener("click", showNext);
+  carousel.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+  }, { passive: true });
+  carousel.addEventListener("touchend", (event) => {
+    const difference = touchStartX - event.changedTouches[0].screenX;
+    if (Math.abs(difference) >= 45) difference > 0 ? showNext() : showPrevious();
+  }, { passive: true });
 
   updateCarousel();
 });
 
-window.addEventListener("load", typeOnce);
+const scrollProgressBar = document.querySelector(".scroll-progress-bar");
+
+function updateScrollProgress() {
+  if (!scrollProgressBar) return;
+
+  const scrollableHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const progress = scrollableHeight > 0
+    ? (window.scrollY / scrollableHeight) * 100
+    : 0;
+
+  scrollProgressBar.style.width = `${Math.min(progress, 100)}%`;
+}
+
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("resize", updateScrollProgress);
+window.addEventListener("load", () => {
+  typeLoop();
+  updateScrollProgress();
+});
