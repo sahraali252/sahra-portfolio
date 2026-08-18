@@ -800,6 +800,12 @@ body {
   border-radius: 0;
 }
 
+.github-btn,
+.carousel-arrow {
+  font-family: "DM Sans", Arial, sans-serif;
+  font-variant-emoji: text;
+}
+
 .love-card > .love-grid {
   display: grid;
   width: calc(100% - clamp(42px, 7vw, 108px));

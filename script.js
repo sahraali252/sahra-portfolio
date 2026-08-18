@@ -1,5 +1,13 @@
 document.documentElement.classList.add("js");
 
+document.querySelectorAll(".github-btn").forEach((link) => {
+  link.childNodes.forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      node.textContent = node.textContent.replaceAll("↗", "↗︎");
+    }
+  });
+});
+
 const typingTarget = document.querySelector(".typing-line");
 const fullText = "hi, i’m sahra.";
 const nameStart = fullText.indexOf("sahra");
