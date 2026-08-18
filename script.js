@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js");
+
 const typingTarget = document.querySelector(".typing-line");
 const fullText = "hi, i’m sahra.";
 const nameStart = fullText.indexOf("sahra");
@@ -116,3 +118,47 @@ window.addEventListener("load", () => {
   typeLoop();
   updateScrollProgress();
 });
+
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const revealTargets = document.querySelectorAll(
+  ".section-title-row, .card > p, .project-card, .activity-card, .love-grid, .contact-list"
+);
+
+revealTargets.forEach((element) => element.classList.add("scroll-reveal"));
+
+if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+  revealTargets.forEach((element) => element.classList.add("is-visible"));
+} else {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+
+  revealTargets.forEach((element) => revealObserver.observe(element));
+}
+
+const navigationLinks = [...document.querySelectorAll(".topbar nav a[href^='#']")];
+const linkedSections = navigationLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+if ("IntersectionObserver" in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+
+    navigationLinks.forEach((link) => {
+      const isCurrent = link.getAttribute("href") === `#${visible.target.id}`;
+      link.classList.toggle("is-current", isCurrent);
+      if (isCurrent) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }, { rootMargin: "-22% 0px -58%", threshold: [0, 0.15, 0.4] });
+
+  linkedSections.forEach((section) => sectionObserver.observe(section));
+}

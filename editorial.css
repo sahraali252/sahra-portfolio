@@ -1,0 +1,1058 @@
+:root {
+  --editorial-rule: rgba(29, 28, 27, .24);
+  --editorial-gutter: clamp(24px, 5vw, 76px);
+}
+
+body {
+  background: #f8f7f4;
+}
+
+.page-shell {
+  width: min(1380px, 100% - (var(--editorial-gutter) * 2));
+}
+
+.topbar {
+  padding: 25px 0 20px;
+  border-color: var(--editorial-rule);
+}
+
+.brand {
+  font-size: 1.08rem;
+  letter-spacing: -.04em;
+}
+
+.topbar nav {
+  gap: clamp(14px, 2vw, 30px);
+}
+
+main {
+  padding-top: clamp(64px, 9vw, 132px);
+}
+
+.hero {
+  min-height: auto;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, .72fr);
+  align-items: center;
+  gap: clamp(70px, 10vw, 150px);
+  padding-bottom: clamp(76px, 9vw, 124px);
+}
+
+.hero-text {
+  padding-top: 0;
+}
+
+.tiny-label {
+  margin-bottom: 34px;
+  letter-spacing: .2em;
+}
+
+.typing-line {
+  max-width: 820px;
+  font-size: clamp(4.4rem, 9vw, 9rem);
+  white-space: normal;
+}
+
+.speech-bubble {
+  max-width: 630px;
+  margin-top: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.75;
+}
+
+.speech-bubble::after {
+  display: none;
+}
+
+.hero-buttons {
+  margin-top: 38px;
+}
+
+.hero-panels {
+  display: block;
+  padding-top: 0;
+}
+
+.focus-panel,
+.skills-panel {
+  padding: 34px 0 40px;
+  border: 0;
+  border-top: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.focus-panel + .focus-panel {
+  margin-top: 22px;
+}
+
+.focus-panel::before {
+  display: none;
+}
+
+.focus-panel h2 {
+  margin-top: 22px;
+  font-size: clamp(1.6rem, 2.4vw, 2.25rem);
+}
+
+.focus-list {
+  margin-top: 22px;
+}
+
+.skill-row {
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.card {
+  position: relative;
+  padding: clamp(68px, 7.5vw, 108px) 0;
+  border-top: 1px solid var(--editorial-rule);
+}
+
+.section-title-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  margin-bottom: clamp(38px, 4.5vw, 62px);
+}
+
+.section-title-row h2 {
+  max-width: 980px;
+  margin: 0;
+  font-size: clamp(3.4rem, 5.2vw, 6.5rem);
+  font-weight: 600;
+  letter-spacing: -.075em;
+  line-height: .88;
+  white-space: nowrap;
+  transform: translateX(clamp(-64px, -4vw, -34px));
+}
+
+.section-title-row h2::before {
+  content: "—";
+  display: inline-block;
+  margin-right: .12em;
+  font-weight: 400;
+  letter-spacing: -.12em;
+}
+
+.section-badge {
+  padding-bottom: 8px;
+}
+
+.card > p {
+  max-width: 760px;
+  margin-left: clamp(0px, 16vw, 230px);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.8;
+}
+
+.project-grid,
+.projects-grid,
+.activity-grid,
+.leadership-grid {
+  display: block;
+  margin-top: 0;
+}
+
+.projects-grid,
+.activity-grid,
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(34px, 5vw, 76px);
+}
+
+.projects-grid > .project-card,
+.activity-grid > .activity-card,
+.leadership-grid > .project-card {
+  align-content: start;
+}
+
+.projects-grid > .project-card > p,
+.projects-grid > .project-card > .stack,
+.projects-grid > .project-card > .github-btn,
+.projects-grid > .project-card > .project-links,
+.activity-grid > .activity-card > p,
+.activity-grid > .activity-card > .activity-highlight,
+.activity-grid > .activity-card > .stack,
+.activity-grid > .activity-card > .gallery-toggle,
+.leadership-grid > .project-card > p,
+.leadership-grid > .project-card > .github-btn {
+  width: 100%;
+  margin-left: 0;
+}
+
+.computer-project,
+.activity-card:has(.activity-gallery.open),
+.colorstack-card {
+  grid-column: 1 / -1;
+}
+
+.project-card,
+.activity-card,
+.love-box,
+.sentinel-feature,
+.colorstack-card {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(26px, 2.8vw, 40px) 0;
+  border: 0;
+  border-top: 1px solid var(--editorial-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.project-card:hover,
+.activity-card:hover,
+.love-box:hover {
+  border-color: var(--accent);
+  background: transparent;
+  transform: none;
+  box-shadow: none;
+}
+
+.project-card:first-child,
+.activity-card:first-child {
+  border-top-color: var(--ink);
+}
+
+.project-card h3,
+.activity-card h3 {
+  max-width: 780px;
+  margin: 8px 0 16px;
+  font-size: clamp(1.8rem, 3.25vw, 3.4rem);
+  letter-spacing: -.055em;
+  line-height: 1;
+}
+
+.project-card > p,
+.activity-card > p,
+.activity-card > .activity-highlight,
+.project-card > .stack,
+.activity-card > .stack,
+.project-card > .github-btn,
+.project-card > .project-links,
+.activity-card > .github-btn,
+.activity-card > .gallery-toggle,
+.project-card > .build-toggle {
+  width: min(670px, 62%);
+  margin-left: auto;
+}
+
+.project-top {
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.folder-icon {
+  width: 28px;
+  height: 20px;
+  border-width: 1px;
+  border-radius: 2px;
+}
+
+.stack {
+  margin-top: 16px;
+}
+
+.stack span {
+  padding: 3px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.stack span:not(:last-child)::after {
+  content: " /";
+  color: var(--line);
+}
+
+.github-btn,
+.build-toggle,
+.gallery-toggle {
+  border-radius: 999px;
+}
+
+.computer-project {
+  order: initial;
+}
+
+.computer-project .computer-layout {
+  align-items: start;
+  gap: clamp(34px, 6vw, 90px);
+}
+
+.sentinel-feature {
+  color: var(--ink);
+  background: transparent;
+}
+
+.sentinel-feature:hover {
+  border-color: var(--accent);
+  background: transparent;
+}
+
+.sentinel-layout {
+  grid-template-columns: minmax(0, .8fr) minmax(420px, 1.2fr);
+}
+
+.sentinel-copy h3,
+.sentinel-feature .sentinel-pitch {
+  color: var(--ink);
+}
+
+.sentinel-feature p,
+.sentinel-feature .stack span {
+  color: var(--muted);
+}
+
+.sentinel-preview {
+  transform: none;
+}
+
+.activity-gallery,
+.build-log {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.activity-card:has(.activity-gallery.open) {
+  grid-column: auto;
+}
+
+.love-card {
+  padding-bottom: clamp(64px, 7vw, 96px);
+}
+
+.love-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.love-box {
+  display: block;
+  padding: 30px 18px;
+  border-top: 0;
+  border-right: 1px solid var(--editorial-rule);
+  text-align: left;
+}
+
+.love-box:last-child {
+  border-right: 0;
+}
+
+#contact {
+  display: grid;
+  min-height: 58vh;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  column-gap: 8vw;
+}
+
+#contact .section-title-row {
+  display: block;
+  margin: 0;
+}
+
+#contact > p,
+#contact .contact-list {
+  grid-column: 2;
+  margin-left: 0;
+}
+
+#contact > p {
+  grid-row: 1;
+  align-self: end;
+}
+
+#contact .contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-self: start;
+}
+
+#contact .contact-list a {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+/* Essay-like hierarchy: section titles hold the margin, body content indents. */
+.card > :not(.section-title-row) {
+  width: calc(100% - clamp(42px, 7vw, 108px));
+  margin-left: clamp(42px, 7vw, 108px);
+}
+
+.card > p {
+  max-width: 760px;
+}
+
+#contact > p,
+#contact > .contact-list {
+  width: auto;
+  margin-left: clamp(28px, 4vw, 60px);
+}
+
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+
+  .hero-panels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .focus-panel + .focus-panel {
+    margin-top: 0;
+  }
+
+  .sentinel-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    width: calc(100% - 34px);
+  }
+
+  .topbar {
+    padding-top: 18px;
+  }
+
+  .hero {
+    padding-bottom: 100px;
+  }
+
+  .hero-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title-row {
+    display: block;
+  }
+
+  .section-title-row h2 {
+    font-size: clamp(1.8rem, 6.6vw, 3.2rem);
+    letter-spacing: -.065em;
+    transform: translateX(-12px);
+  }
+
+  .section-badge {
+    margin-top: 18px;
+  }
+
+  .card > p {
+    margin-left: 18px;
+  }
+
+  .card > :not(.section-title-row) {
+    width: calc(100% - 18px);
+    margin-left: 18px;
+  }
+
+  #contact > p,
+  #contact > .contact-list {
+    width: calc(100% - 18px);
+    margin-left: 18px;
+  }
+
+  .projects-grid,
+  .activity-grid,
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card > p,
+  .activity-card > p,
+  .activity-card > .activity-highlight,
+  .project-card > .stack,
+  .activity-card > .stack,
+  .project-card > .github-btn,
+  .project-card > .project-links,
+  .activity-card > .github-btn,
+  .activity-card > .gallery-toggle,
+  .project-card > .build-toggle {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .love-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .love-box:nth-child(2) {
+    border-right: 0;
+  }
+
+  .love-box:nth-child(n+3) {
+    border-top: 1px solid var(--editorial-rule);
+  }
+
+  #contact {
+    display: block;
+    min-height: auto;
+  }
+
+  #contact > p {
+    margin-top: 42px;
+  }
+}
+
+/* Tactile hover and press states without reintroducing card boxes. */
+.btn,
+.github-btn,
+.build-toggle,
+.gallery-toggle,
+#contact .contact-list a,
+.social-link,
+.carousel-arrow {
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 var(--ink);
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease,
+    transform 150ms ease, box-shadow 150ms ease;
+}
+
+.btn:hover,
+.github-btn:hover,
+.build-toggle:hover,
+.gallery-toggle:hover,
+#contact .contact-list a:hover,
+.social-link:hover,
+.carousel-arrow:hover {
+  border-color: var(--ink);
+  background: var(--surface-strong);
+  color: var(--accent);
+  transform: translate(-3px, -3px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn:active,
+.github-btn:active,
+.build-toggle:active,
+.gallery-toggle:active,
+#contact .contact-list a:active,
+.social-link:active,
+.carousel-arrow:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.project-card h3,
+.activity-card h3 {
+  transition: color 160ms ease, transform 160ms ease, text-shadow 160ms ease;
+}
+
+.section-title-row h2 {
+  transition: color 160ms ease, text-shadow 160ms ease;
+}
+
+.project-card:hover h3,
+.activity-card:hover h3 {
+  color: var(--accent);
+  transform: translate(-2px, -2px);
+  text-shadow: 3px 3px 0 rgba(29, 28, 27, .13);
+}
+
+.section-title-row:hover h2 {
+  color: var(--accent);
+  text-shadow: 3px 3px 0 rgba(29, 28, 27, .13);
+}
+
+.project-card:active h3,
+.activity-card:active h3 {
+  transform: translate(1px, 1px);
+  text-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .github-btn,
+  .build-toggle,
+  .gallery-toggle,
+  #contact .contact-list a,
+  .social-link,
+  .carousel-arrow,
+  .project-card h3,
+  .activity-card h3 {
+    transform: none !important;
+  }
+}
+
+/* Restrained scroll feedback. */
+.topbar nav a.is-current {
+  color: var(--accent);
+}
+
+.topbar nav a.is-current::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.js .scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms ease, transform 620ms cubic-bezier(.2, .75, .25, 1);
+}
+
+.js .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card,
+.activity-card {
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Pixel display face is reserved for major wayfinding headings. */
+.section-title-row h2 {
+  font-family: "Silkscreen", "Courier New", monospace;
+  font-size: clamp(2.5rem, 3.75vw, 4.65rem);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.05;
+}
+
+@media (max-width: 720px) {
+  .section-title-row h2 {
+    font-size: clamp(1.72rem, 5.6vw, 2.5rem);
+    letter-spacing: -.045em;
+  }
+}
+
+/* Readability pass: quieter hierarchy, wider measures, stronger body copy. */
+body {
+  font-size: 17px;
+  line-height: 1.68;
+}
+
+.topbar nav a {
+  font-size: .82rem;
+}
+
+.section-title-row h2 {
+  font-size: clamp(2.9rem, 4.3vw, 5.2rem);
+  letter-spacing: -.04em;
+  line-height: .98;
+  transform: translateX(clamp(-42px, -2.8vw, -22px));
+}
+
+.section-title-row {
+  margin-bottom: clamp(24px, 2.6vw, 36px);
+}
+
+.card > :not(.section-title-row) {
+  width: calc(100% - clamp(28px, 4vw, 64px));
+  margin-left: clamp(28px, 4vw, 64px);
+}
+
+.card > p {
+  max-width: 68ch;
+}
+
+.project-card h3,
+.activity-card h3,
+.sentinel-copy h3 {
+  max-width: 30ch;
+  font-size: clamp(1.65rem, 2.25vw, 2.55rem);
+  letter-spacing: -.025em;
+  line-height: 1.16;
+}
+
+.project-card > p,
+.activity-card > p,
+.card > p,
+.focus-panel > p,
+.skill-row p {
+  color: #3f3c3a;
+  font-size: clamp(1rem, 1.08vw, 1.1rem);
+  line-height: 1.7;
+}
+
+.project-tag,
+.section-badge,
+.activity-type,
+.focus-heading,
+.skill-row > span {
+  font-size: .72rem;
+  letter-spacing: .09em;
+}
+
+.project-card,
+.activity-card,
+.sentinel-feature,
+.colorstack-card {
+  padding-top: 22px;
+  padding-bottom: 26px;
+}
+
+.love-card > .love-grid {
+  width: calc(100% - clamp(28px, 4vw, 64px));
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+
+  .section-title-row h2 {
+    font-size: clamp(2.2rem, 7vw, 3rem);
+    transform: translateX(-8px);
+  }
+
+  .card > :not(.section-title-row) {
+    width: calc(100% - 12px);
+    margin-left: 12px;
+  }
+
+  .project-card h3,
+  .activity-card h3,
+  .sentinel-copy h3 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .love-card > .love-grid {
+    width: calc(100% - 12px);
+  }
+}
+
+/* Clearer hierarchy without decorative circles or heading prefixes. */
+.section-title-row h2::before {
+  content: none;
+}
+
+.section-title-row h2 {
+  letter-spacing: -.045em;
+}
+
+.project-card h3,
+.activity-card h3,
+.sentinel-copy h3 {
+  max-width: 900px;
+  margin: 6px 0 14px;
+  color: var(--ink);
+  font-size: clamp(2.15rem, 3.35vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -.04em;
+  line-height: 1.08;
+}
+
+.project-card > p,
+.activity-card > p,
+.card > p {
+  color: #55514f;
+  line-height: 1.72;
+}
+
+.folder-icon,
+.activity-icon,
+.status-dot {
+  display: none;
+}
+
+.btn,
+.github-btn,
+.build-toggle,
+.gallery-toggle,
+.social-link,
+.carousel-arrow,
+#contact .contact-list a,
+.stack span,
+.section-badge,
+.project-tag {
+  border-radius: 0;
+}
+
+.social-link {
+  border-width: 0 0 1px;
+}
+
+.carousel-dot {
+  width: 18px;
+  height: 2px;
+  border-radius: 0;
+}
+
+.love-card > .love-grid {
+  display: grid;
+  width: calc(100% - clamp(42px, 7vw, 108px));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.love-card .love-box {
+  display: grid;
+  width: 100%;
+  min-height: 112px;
+  aspect-ratio: auto;
+  padding: 22px 18px;
+  place-items: center start;
+  border: 0;
+  border-right: 1px solid var(--editorial-rule);
+  border-radius: 0;
+  font-size: clamp(.9rem, 1.15vw, 1.05rem);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.love-card .love-box:last-child {
+  border-right: 0;
+}
+
+@media (max-width: 720px) {
+  .project-card h3,
+  .activity-card h3,
+  .sentinel-copy h3 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .love-card > .love-grid {
+    width: calc(100% - 18px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .love-card .love-box:nth-child(2) {
+    border-right: 0;
+  }
+
+  .love-card .love-box:nth-child(n+3) {
+    border-top: 1px solid var(--editorial-rule);
+  }
+}
+
+@media (max-width: 460px) {
+  .typing-line {
+    font-size: clamp(3.4rem, 19vw, 5rem);
+  }
+
+  .love-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .love-box {
+    border-right: 0;
+    border-top: 1px solid var(--editorial-rule);
+  }
+
+  .love-box:first-child {
+    border-top: 0;
+  }
+}
+
+/* Four compact ideas, treated as editorial seals rather than cards. */
+.love-card > .love-grid {
+  display: grid;
+  width: calc(100% - clamp(42px, 7vw, 108px));
+  grid-template-columns: repeat(4, minmax(0, 160px));
+  justify-content: space-between;
+  gap: clamp(8px, 2vw, 28px);
+  border: 0;
+}
+
+.love-card .love-box {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: clamp(8px, 1.8vw, 22px);
+  place-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  font-size: clamp(.62rem, 1.05vw, .9rem);
+  line-height: 1.25;
+  text-align: center;
+}
+
+.love-card .love-box:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#experience .project-card h3,
+#leadership .project-card h3 {
+  max-width: 34ch;
+  font-size: clamp(1.45rem, 1.85vw, 2.05rem);
+  line-height: 1.22;
+  letter-spacing: -.02em;
+}
+
+@media (max-width: 620px) {
+  .love-card > .love-grid {
+    width: calc(100% - 18px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .love-card .love-box {
+    padding: 6px;
+    font-size: clamp(.52rem, 2.35vw, .68rem);
+  }
+
+  #experience .project-card h3,
+  #leadership .project-card h3 {
+    font-size: clamp(1.3rem, 5.2vw, 1.7rem);
+  }
+}
+
+/* Denser reading rhythm: less empty runway, larger supporting copy. */
+main {
+  padding-top: clamp(40px, 5vw, 72px);
+}
+
+.hero {
+  gap: clamp(42px, 6vw, 86px);
+  padding-bottom: clamp(50px, 6vw, 82px);
+}
+
+.tiny-label {
+  margin-bottom: 22px;
+}
+
+.speech-bubble {
+  margin-top: 24px;
+}
+
+.hero-buttons {
+  margin-top: 26px;
+}
+
+.focus-panel,
+.skills-panel {
+  padding: 24px 0 28px;
+}
+
+.focus-panel + .focus-panel {
+  margin-top: 14px;
+}
+
+.focus-panel h2 {
+  margin-top: 16px;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+}
+
+.focus-panel > p {
+  font-size: clamp(.98rem, 1.15vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.focus-list {
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.skill-row {
+  gap: 6px;
+  padding: 11px 0;
+}
+
+.skill-row > span {
+  font-size: clamp(.7rem, .82vw, .78rem);
+}
+
+.skill-row p {
+  font-size: clamp(.9rem, 1vw, 1rem);
+  line-height: 1.45;
+}
+
+.focus-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+}
+
+.card {
+  padding: clamp(46px, 5vw, 72px) 0;
+}
+
+.section-title-row {
+  margin-bottom: clamp(26px, 3vw, 42px);
+}
+
+.project-card,
+.activity-card,
+.love-box,
+.sentinel-feature,
+.colorstack-card {
+  padding-top: clamp(18px, 2vw, 28px);
+  padding-bottom: clamp(20px, 2.2vw, 32px);
+}
+
+.project-card h3,
+.activity-card h3 {
+  margin-bottom: 10px;
+}
+
+.project-card > p,
+.activity-card > p {
+  font-size: clamp(1rem, 1.18vw, 1.14rem);
+  line-height: 1.65;
+}
+
+.project-top {
+  margin-bottom: 10px;
+}
+
+.stack {
+  margin-top: 12px;
+}
+
+.github-btn,
+.build-toggle,
+.gallery-toggle,
+.project-links {
+  margin-top: 14px;
+}
+
+.love-card {
+  padding-bottom: clamp(44px, 5vw, 68px);
+}
+
+#contact {
+  min-height: 46vh;
+}
+
+@media (max-width: 720px) {
+  main {
+    padding-top: 28px;
+  }
+
+  .hero {
+    gap: 44px;
+    padding-bottom: 58px;
+  }
+
+  .card {
+    padding: 42px 0;
+  }
+
+  .section-title-row {
+    margin-bottom: 24px;
+  }
+}

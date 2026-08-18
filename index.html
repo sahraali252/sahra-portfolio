@@ -5,17 +5,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>sahra | portfolio</title>
+  <meta name="description" content="Sahra Ali — software engineering portfolio featuring real-time systems, security tooling, AI, and full-stack products." />
+  <title>Sahra Ali | Software Engineer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&family=Silkscreen:wght@400;700&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="editorial.css?v=1">
 </head>
 
 <body>
@@ -93,6 +95,7 @@
 
         </div>
 
+        <div class="hero-panels">
         <aside class="focus-panel" aria-label="Current focus">
           <div class="focus-heading">
             <span class="status-dot"></span>
@@ -137,6 +140,42 @@
             <span>Open to opportunities</span>
           </div>
         </aside>
+
+        <aside class="focus-panel skills-panel" aria-label="Technical skills">
+          <div class="focus-heading">
+            <span class="status-dot"></span>
+            <span>technical toolkit</span>
+          </div>
+
+          <h2>Tools I build with.</h2>
+
+          <p>
+            A focused snapshot of the languages and technologies I use most.
+          </p>
+
+          <div class="focus-list skills-snapshot">
+            <div class="skill-row">
+              <span>languages</span>
+              <p>Go · TypeScript · Python · Ruby · Java · SQL</p>
+            </div>
+
+            <div class="skill-row">
+              <span>application stack</span>
+              <p>React · React Native · Rails · FastAPI · Node.js</p>
+            </div>
+
+            <div class="skill-row">
+              <span>systems & AI</span>
+              <p>AWS · Docker · Kafka · PostgreSQL · LangGraph</p>
+            </div>
+          </div>
+
+          <div class="focus-footer">
+            <span>Production-minded</span>
+            <span>Always learning</span>
+          </div>
+        </aside>
+        </div>
 
       </section>
 
@@ -339,7 +378,7 @@
           </article>
 
 
-          <article class="project-card">
+          <article class="project-card lifereceipt-card">
 
             <div class="project-top">
               <span class="folder-icon" aria-hidden="true"></span>
@@ -360,15 +399,31 @@
               <span>typescript</span>
             </div>
 
-            <a
-              href="https://github.com/sahraali252/LifeReceipt"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="github-btn"
-            >
+            <a href="https://github.com/sahraali252/LifeReceipt" target="_blank" rel="noopener noreferrer" class="github-btn">
               view github ↗
             </a>
 
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <span class="folder-icon" aria-hidden="true"></span>
+              <span class="project-tag">featured · security</span>
+            </div>
+            <h3>sentinel</h3>
+            <p>
+              real-time api threat detection platform that streams traffic
+              through kafka, applies configurable go detection rules, persists
+              alerts, and broadcasts them to a live operations dashboard.
+            </p>
+            <div class="stack">
+              <span>go</span><span>kafka</span><span>redis</span>
+              <span>postgresql</span><span>react</span><span>docker</span>
+            </div>
+            <div class="project-links">
+              <a href="https://sentinel-api-defense.vercel.app" target="_blank" rel="noopener noreferrer" class="github-btn">live demo ↗</a>
+              <a href="https://github.com/sahraali252/sentinel" target="_blank" rel="noopener noreferrer" class="github-btn">view github ↗</a>
+            </div>
           </article>
 
 
@@ -511,76 +566,6 @@
           </article>
 
 
-          <article class="project-card">
-
-            <div class="project-top">
-              <span class="folder-icon" aria-hidden="true"></span>
-              <span class="project-tag">featured</span>
-            </div>
-
-            <h3>sentinel</h3>
-
-            <p>
-              real-time api threat detection and traffic monitoring system.
-            </p>
-
-            <div class="stack">
-              <span>go</span>
-              <span>redis</span>
-              <span>kafka</span>
-              <span>react</span>
-            </div>
-
-          </article>
-
-
-          <article class="project-card">
-
-            <div class="project-top">
-              <span class="folder-icon" aria-hidden="true"></span>
-              <span class="project-tag">machine learning</span>
-            </div>
-
-            <h3>atlasml</h3>
-
-            <p>
-              machine learning platform for training, tracking,
-              deploying, and monitoring models in production.
-            </p>
-
-            <div class="stack">
-              <span>python</span>
-              <span>pytorch</span>
-              <span>mlflow</span>
-              <span>fastapi</span>
-            </div>
-
-          </article>
-
-
-          <article class="project-card">
-
-            <div class="project-top">
-              <span class="folder-icon" aria-hidden="true"></span>
-              <span class="project-tag">computer vision</span>
-            </div>
-
-            <h3>rubik’s cube solver</h3>
-
-            <p>
-              computer vision tool that scans a cube and generates
-              solving steps.
-            </p>
-
-            <div class="stack">
-              <span>python</span>
-              <span>opencv</span>
-              <span>solver</span>
-            </div>
-
-          </article>
-
-
           <article class="project-card computer-project">
 
             <div class="project-top">
@@ -683,98 +668,6 @@
             </div>
 
           </article>
-
-
-          <article class="project-card">
-
-            <div class="project-top">
-              <span class="folder-icon" aria-hidden="true"></span>
-              <span class="project-tag">featured</span>
-            </div>
-
-            <h3>internnext</h3>
-
-            <p>
-              ai-powered resume tailoring platform.
-            </p>
-
-            <div class="stack">
-              <span>react</span>
-              <span>node</span>
-              <span>ai</span>
-            </div>
-
-          </article>
-
-
-          <article class="project-card">
-
-            <div class="project-top">
-              <span class="folder-icon" aria-hidden="true"></span>
-              <span class="project-tag">java</span>
-            </div>
-
-            <h3>flight management system</h3>
-
-            <p>
-              oop-based system for managing flights.
-            </p>
-
-            <div class="stack">
-              <span>java</span>
-              <span>oop</span>
-              <span>arrays</span>
-            </div>
-
-          </article>
-
-
-          <article class="project-card">
-
-            <div class="project-top">
-              <span class="folder-icon" aria-hidden="true"></span>
-              <span class="project-tag">full stack</span>
-            </div>
-
-            <h3>registration system</h3>
-
-            <p>
-              web app with database integration.
-            </p>
-
-            <div class="stack">
-              <span>node</span>
-              <span>mysql</span>
-              <span>javascript</span>
-            </div>
-
-          </article>
-
-
-          <article class="project-card">
-
-            <div class="project-top">
-              <span class="folder-icon" aria-hidden="true"></span>
-              <span class="project-tag">in progress</span>
-            </div>
-
-            <h3>webshooter</h3>
-
-            <p>
-              fun project inspired by the new spider-man movie —
-              real-time hand gesture recognition that triggers
-              an animated web-shooting effect and launches chrome.
-            </p>
-
-            <div class="stack">
-              <span>python</span>
-              <span>opencv</span>
-              <span>mediapipe</span>
-              <span>computer vision</span>
-            </div>
-
-          </article>
-
         </div>
 
       </section>
@@ -1135,10 +1028,10 @@
 
         <div class="section-title-row">
 
-          <h2>leadership</h2>
+          <h2>leadership & community</h2>
 
           <span class="section-badge">
-            community leadership
+            involvement & leadership
           </span>
 
         </div>
@@ -1202,6 +1095,22 @@
               in 2 hours and try out the newest apis and ai tools!
             </p>
 
+          </article>
+
+          <article class="project-card colorstack-card">
+            <div class="project-top">
+              <span class="folder-icon colorstack-mark" aria-hidden="true">C</span>
+              <span class="project-tag">jun 2026 – present</span>
+            </div>
+            <h3>ColorStack · member</h3>
+            <p>
+              active member of the ColorStack community, connecting with other
+              students in tech through career development, shared learning, and
+              opportunities across software engineering.
+            </p>
+            <a href="https://www.colorstack.org/" target="_blank" rel="noopener noreferrer" class="github-btn">
+              visit ColorStack ↗
+            </a>
           </article>
 
         </div>
@@ -1291,7 +1200,7 @@
 
   </div>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 
 </body>
 </html>
